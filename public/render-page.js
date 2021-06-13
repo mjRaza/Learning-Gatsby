@@ -7,7 +7,13 @@
   \**********************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var plugins = []; // During bootstrap, we write requires at top of this file which looks like:
+var plugins = [{
+  name: 'default-site-plugin',
+  plugin: __webpack_require__(/*! ./gatsby-ssr */ "./gatsby-ssr.js"),
+  options: {
+    "plugins": []
+  }
+}]; // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
 //   {
 //     plugin: require("/path/to/plugin1/gatsby-ssr.js"),
@@ -322,6 +328,36 @@ HTML.propTypes = {
   preBodyComponents: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().array),
   body: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
   postBodyComponents: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().array)
+};
+
+/***/ }),
+
+/***/ "./gatsby-ssr.js":
+/*!***********************!*\
+  !*** ./gatsby-ssr.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+const React = __webpack_require__(/*! react */ "react");
+
+const wrapRootElement = __webpack_require__(/*! ./wrap-root-element */ "./wrap-root-element.js");
+
+exports.wrapRootElement = wrapRootElement;
+
+/***/ }),
+
+/***/ "./wrap-root-element.js":
+/*!******************************!*\
+  !*** ./wrap-root-element.js ***!
+  \******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const React = __webpack_require__(/*! react */ "react");
+
+module.exports = ({
+  element
+}) => {
+  return /*#__PURE__*/React.createElement("div", null, "NAV WILL COME HERE", element);
 };
 
 /***/ }),
