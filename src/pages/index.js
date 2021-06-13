@@ -1,11 +1,16 @@
 import React from 'react'
+import netlifyIdentity from 'netlify-identity-widget'
 
-const index = () => {
+const Index = () => {
+    React.useEffect(() => {
+        netlifyIdentity.init({})
+    }, [])
     return (
         <div>
-            initial gatsby setup
+            <h1>Todo App</h1>
+            <button onClick={() => netlifyIdentity.open()}>Login</button>
         </div>
     )
 }
 
-export default index
+export default Index
